@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Main site settings, adding font -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthCoin</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Site header -->
+    <div class="header">
+        <!-- Header with buttons (desktop) -->
+        <div class="nav-links">
+            <a href="#terms">Terms & Conditions</a>
+            <a href="#presentation-section">MVP Presentation</a>
+            <a href="#social-media-section">Social media</a>
+        </div>
+
+        <!-- Adding menu button (mobiles) -->
+        <div class="menu-button" id="menuButton">
+            <img src="media/menu-button.svg" />
+        </div>
+
+        <!-- Dark overlay when opening menu -->
+        <div class="overlay" id="overlay"></div>
+
+        <!-- Menu with buttons (mobiles) -->
+        <div class="menu" id="menu">
+            <button class="menu-close" id="menuClose">&times;</button>
+            <ul>
+                <li><a href="#terms">Terms & Conditions</a></li>
+                <li><a href="#presentation-section">MVP Presentation</a></li>
+                <li><a href="#social-media-section">Social media</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Terms & Conditions overlay block -->
+    <div class="terms-modal" id="termsModal">
+        <div class="terms-content">
+            <button class="close-button" id="closeButton">&times;</button>
+            <h2 class="terms-title">Terms & Conditions</h2>
+            <div class="terms-text">
+                <p>1. By accessing this website, you agree to the following terms and conditions.</p>
+                <p>2. The website content is provided for informational purposes only.</p>
+                <p>3. Unauthorized copying or distribution of website materials is prohibited.</p>
+                <p>4. The website reserves the right to update the terms without prior notice.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main title on site -->
+    <div class="title-container">
+        <div>
+            <img src="media/healthcoin.png" alt="site icon" class="icon" />  <!-- site icon -->
+        </div>
+        <h1 class="site-title">HealthCoin</h1>
+        <p class="text">HealthCoin: Cryptocurrency with a Heart.</p>
+        <p class="text2">Donate, Transform, Empower.</p>
+    </div>
+
+    <!-- First block "Buying" -->
+    <div class="buying-block">
+        <h2 class="buying-title">Buy HealthCoin</h2>
+        <div class="block-buying-buttons">
+            <button class="buying-button" onclick="window.location.href='https://example.com'">
+                <img class="button-icon" src="media/card.svg" alt="Card Icon">
+                Buy with card
+            </button>
+            <button class="buying-button" onclick="window.location.href='https://example.com'">
+                <img class="button-icon" src="media/coin.svg" alt="Coin Icon">
+                Buy with crypto
+            </button>
+        </div>
+    </div>
+
+    <!-- Second block "Address" -->
+    <div class="white-block">
+        <h2 class="address-title">Solana token address</h2>
+        <div class="token-address">
+            <input type="text" id="tokenInput" value="Type for example" readonly>
+            <button id="copyButton">
+                <img src="media/copy.svg" alt="Copy" class="copy-icon">
+            </button>
+        </div>
+    </div>
+
+    <!-- Third block "Description" -->
+    <div class="what-is-block">
+        <h2 class="what-is-title">What is HealthCoin?</h2>
+        <div class="what-is-text-block">
+            <p class="what-is-text">HealthCoin is a decentralized cryptocurrency built on the Solana blockchain. It promotes social good by dedicating half of it's wealth to charitable organizations worldwide. This innovative approach allows users to invest in a project that directly benefits those in need, merging financial gains with a positive social impact.</p>
+            <p class="what-is-text">HealthCoin's unique approach combines blockchain technology with a strong philanthropic focus. It aims to revolutionize the way we think about investing, allowing individuals to participate in a transparent and accountable charity system. The platform fosters a global community dedicated to improving health outcomes for people around the world.</p>
+        </div>
+    </div>
+
+    <!-- Fourth block "How it works?" -->
+    <div class="white-block">
+        <h2 class="how-it-works-title">How HealthCoin Works?</h2>
+        <div class="how-it-works-item">
+            <div class="how-it-works-number">1</div>
+            <p class="how-it-works-text">
+                HealthCoin transactions are processed through the Solana blockchain, ensuring security and transparency. Every transaction contributes to the HealthCoin ecosystem, with a portion directly allocated to charitable causes.
+            </p>
+        </div>
+        <div class="how-it-works-item">
+            <div class="how-it-works-number">2</div>
+            <p class="how-it-works-text">
+                The platform utilizes a secure and transparent voting system for allocating funds to charitable organizations. HealthCoin holders have the power to choose the causes they support, contributing to a democratic and impactful philanthropy model.
+            </p>
+        </div>
+        <div class="how-it-works-item">
+            <div class="how-it-works-number">3</div>
+            <p class="how-it-works-text">
+                HealthCoin's corporative workers contact the funds and offer assistance in both monetary and humanitarian equivalents.
+            </p>
+        </div>
+    </div>
+
+    <!-- Fourth block "Presentation" -->
+    <div class="presentation-block" id="presentation-section">
+        <h2 class="presentation-title">- MVP Presentation -</h2>
+        <div class="file-row-first">
+            <span class="file-type">Presentation.pptx</span>
+            <a href="media/Presentation.pptx" class="download-button" download>
+                <img src="media/download.svg" alt="Download" class="download-icon" />
+            </a>
+        </div>
+        <div class="file-row-second">
+            <span class="file-type">Presentation.pdf</span>
+            <a href="media/Presentation.pdf" class="download-button" download>
+                <img src="media/download.svg" alt="Download" class="download-icon" />
+            </a>
+        </div>
+    </div>
+
+    <!-- Sixth block "Community" -->
+    <div class="community-main-block">
+        <h2 class="community-title">Joining the HealthCoin Community</h2>
+        <div class="community-content">
+            <div class="community-block">
+                <div class="community-number">1</div>
+                <div class="community-text">
+                    <h3 class="community-point-title">Create an Account</h3>
+                    <div class="community-point-text">
+                        Sign up for a HealthCoin account and join the growing community of supporters.
+                    </div>
+                </div>
+            </div>
+            <div class="community-block">
+                <div class="community-number">2</div>
+                <div class="community-text">
+                    <h3 class="community-point-title">Explore the Ecosystem</h3>
+                    <div class="community-point-text">
+                        Learn about the various projects and initiatives supported by HealthCoin.
+                    </div>
+                </div>
+            </div>
+            <div class="community-block full-width">
+                <div class="community-number">3</div>
+                <div class="community-text">
+                    <h3 class="community-point-title">Connect with Others</h3>
+                    <div class="community-point-text">
+                        Engage in discussions, share ideas, and contribute to the HealthCoin community in our social media.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seventh block "Investing" -->
+    <div class="investing-main-block">
+        <h2 class="investing-title">Investing in HealthCoin</h2>
+        <ul class="investing-content">
+            <p class="investing-point-title">1 - Buy HealthCoin</p>
+            <li>Acquire HealthCoin through crypto trading platforms or directly from the link on our website. Your investment contributes to charitable causes.</li>
+            <p class="investing-point-title">2 - Hold and Earn</p>
+            <li>Hold HealthCoin and earn rewards for your support, benefiting from it's growing value and impact.</li>
+            <p class="investing-point-title">3 - Support Charities</p>
+            <li>Participate in voting on projects and initiatives, shaping the direction of HealthCoin's charitable giving.</li>
+        </ul>
+    </div>
+
+    <!-- Eighth block "Future" -->
+    <div class="future-block">
+        <h2 class="future-title">The Future of HealthCoin</h2>
+        <p class="future-text">HealthCoin aims to become a global force for good, expanding it's reach and impact to empower individuals and communities worldwide. Through it's dedication to transparency, accountability, and positive social change, HealthCoin paves the way for a more equitable and sustainable future.</p>
+    </div>
+
+    <!-- Social media -->
+    <div class="social-media-section" id="social-media-section">
+        <h2 class="social-media-title">Follow us on social media</h2>
+        <ul class="social-media-links">
+            <li><a href="https://example.com" target="_blank"><img src="media/inst.svg" alt="Instagram"></a></li>
+            <li><a href="https://example.com" target="_blank"><img src="media/telegram.svg" alt="Telegram"></a></li>
+            <li><a href="https://example.com" target="_blank"><img src="media/tiktok.svg" alt="TikTok"></a></li>
+            <li><a href="https://example.com" target="_blank"><img src="media/x.svg" alt="Twitter"></a></li>
+        </ul>
+    </div>
+
+    <!-- Binding to script -->
+    <script src="script.js"></script>
+</body>
+</html>

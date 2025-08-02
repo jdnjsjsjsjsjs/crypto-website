@@ -1,0 +1,1335 @@
+/* Подключение шрифта и обнуление стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #29b48a;
+}
+
+/* Логика прокрута при нажатии кнопки в меню */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Фон-картинка, текст и объекты по центру */
+body {
+    text-align: center;
+    align-items: center;
+    background-image: url('media/back.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+}
+
+/* Стиль шапки сайта */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 60px;
+    width: 100%;
+    background-image: url('media/header.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    font-family: 'Space Grotesk', sans-serif;
+    border-bottom: 2px solid #000000;
+}
+
+/* Кнопки в шапке на компьютере */
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+     /* Стиль текста в кнопках шапки */
+    .nav-links a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        font-size: 20px;
+        background-color: white;
+        padding: 3px;
+        border-radius: 5px;
+        border: 3px solid black;
+    }
+
+    /* Стиль кнопок при наведении */
+        .nav-links a:hover {
+            background-color: #f0f0f0; 
+        }
+
+/* Кнопка меню */
+.menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+    
+    /* Стиль иконки кнопки меню */
+    .menu-button img {
+        width: 30px;
+        height: 30px;
+        padding-left: 5px;
+        padding-top: 5px;
+    }
+
+/* Меню, которое выезжает */
+.menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100%;
+    background-color: #ffffff;
+    border-left: 2px solid black;
+    padding-top: 60px;
+    transition: right 0.3s ease-in-out;
+    flex-direction: column;
+    z-index: 1100;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+    .menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .menu li {
+        display: block;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: black;
+        font-size: 18px;
+    }
+
+        .menu a:hover {
+            background-color: #808080;
+        }
+
+    .menu.active {
+        right: 0;
+    }
+
+/* Стиль кнопки закрытия меню */
+.menu-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 35px;
+    color: black;
+    cursor: pointer;
+}
+
+/* Адаптивы для шапки и меню */
+@media (max-width: 768px) {
+    .header {
+        height: 50px;
+        background-image: url('media/header.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    .nav-links {
+        display: none;
+    }
+    .menu-button {
+        display: block;
+        position: absolute;
+        right: 13px;
+        top: 9px;
+        width: 30px;
+        height: 30px;
+    }
+    .menu {
+        right: -250px;
+    }
+    .menu-button img {
+        width: 25px;
+        height: 25px;
+    }
+    .menu-close {
+        top: 15px;
+        right: 18px;
+        font-size: 25px;
+    }
+}
+@media (min-width: 2000px) {
+    .header {
+        height: 80px;
+    }
+    .nav-links {
+        display: flex;
+        gap: 50px;
+    }
+        .nav-links a {
+            font-size: 30px;
+        }
+}
+
+/* Затемнение фона при открытии меню */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 900;
+}
+    .overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+/* Общий стиль окна Terms & Conditions */
+.terms-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Блок с контентом Terms & Conditions */
+.terms-content {
+    background: #ffffff;
+    width: 90%;
+    max-width: 600px;
+    height: 70%;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Стиль для заголовка Terms & Conditions */
+.terms-title {
+    padding-block-end: 30px;
+    font-size: 40px;
+    font-weight: 800;
+    padding-block-end: 30px;
+    font-family: 'Lora', sans-serif;
+    color: #29b48a;
+}
+
+/* Стиль текста в Terms & Conditions */
+.terms-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    text-align: justify;
+    color: #29b48a;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* Кнопка закрытия окна Terms & Conditions */
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    background: transparent;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Анимация для плавного появления Terms & Conditions */
+.terms-modal.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+/* Стили для полосы прокрутки Terms & Conditions */
+.terms-text::-webkit-scrollbar {
+    width: 8px; 
+}
+/* Стили для бегунка Terms & Conditions */
+.terms-text::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+/* Фон полосы прокрутки Terms & Conditions */
+.terms-text::-webkit-scrollbar-track {
+    background: #f0f0f0; 
+    border-radius: 10px; 
+}
+/* Изменение цвета при наведении на полосу прокрутки Terms & Conditions */
+.terms-text::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Настройки анимации появления Terms & Conditions */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+ /* Адаптация размеров окна Terms для различных устройств */
+@media (max-width: 768px) {
+    .terms-content {
+        width: 70%;
+        height: 60%;
+        padding: 10px;
+    }
+    .terms-title {
+        padding-block-start: 15px;
+        padding-block-end: 10px;
+        font-size: 20px;
+    }
+    .terms-text {
+        font-size: 12px;
+    }
+    .close-button {
+        top: 5px;
+        right: 12px;
+        font-size: 25px;
+    }
+    .terms-text::-webkit-scrollbar {
+        width: 4px;
+    }
+}
+
+/* Контейнер со всем заголовком и картинкой */
+.title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 680px;
+    color: #29b48a;
+}
+
+/* Иконка над "HealthCoin" */
+.icon {
+    padding-top: 30px;
+    width: 300px;
+    height: auto;
+}
+
+/* Заголовок "HealthCoin" */
+.site-title {
+    font-size: 150px;
+    font-weight: 1000;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Надпись под заголовком, первое предложение */
+.text {
+    font-size: 30px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Надпись под заголовком, второе предложение */
+.text2 {
+    font-size: 30px;
+    padding-block-end: 30px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Адаптация заголовка для различных устройств */
+@media (max-width: 375px) {
+    .title-container {
+        height: 500px;
+    }
+    .site-title {
+        font-size: 50px;
+    }
+    .text {
+        font-size: 12px;
+    }
+    .text2 {
+        font-size: 12px;
+        padding-block-end: 30px;
+    }
+    .icon {
+        width: 150px;
+    }
+}
+@media (min-width: 375px) and (max-width: 426px) {
+    .title-container {
+        height: 500px;
+    }
+    .site-title {
+        font-size: 60px;
+    }
+    .text {
+        font-size: 14px;
+    }
+    .text2 {
+        font-size: 14px;
+        padding-block-end: 30px;
+    }
+    .icon {
+        width: 180px;
+    }
+}
+@media (min-width: 426px) and (max-width: 768px) {
+    .title-container {
+        height: 500px;
+    }
+    .site-title {
+        font-size: 67px;
+    }
+    .text {
+        font-size: 14px;
+    }
+    .text2 {
+        font-size: 14px;
+        padding-block-end: 30px;
+    }
+    .icon {
+        width: 200px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+    .title-container {
+        height: 500px;
+    }
+    .site-title {
+        font-size: 80px;
+    }
+    .text {
+        font-size: 16px;
+    }
+    .text2 {
+        font-size: 16px;
+        padding-block-end: 30px;
+    }
+    .icon {
+        width: 200px;
+    }
+}
+@media (min-width: 2000px) {
+    .title-container {
+        height: 1250px;
+    }
+    .site-title {
+        font-size: 250px;
+    }
+    .text {
+        font-size: 50px;
+    }
+    .text2 {
+        font-size: 50px;
+        padding-block-end: 220px;
+    }
+    .icon {
+        width: 400px;
+    }
+}
+
+/* Общий стиль для белых блоков */
+.white-block {
+    background: url('media/white-block-back.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 35px;
+    border-radius: 15px;
+    margin: 30px auto;
+    width: 90%;
+    max-width: 1000px;
+    border: 1px solid #000000;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Адаптация белого блока для различных устройств */
+@media (max-width: 768px) {
+    .white-block {
+        padding: 20px;
+    }
+}
+@media (min-width: 2000px) {
+    .white-block {
+        max-width: 2000px;
+    }
+}
+
+/* Стиль блока с покупкой */
+.buying-block {
+    background: url('media/buying-back.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 35px;
+    border-radius: 15px;
+    margin: 30px auto;
+    width: 90%;
+    max-width: 1000px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Стиль заголовка блока с покупкой */
+.buying-title {
+    font-size: 60px;
+    font-weight: 800;
+    padding-block-end: 30px;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+    color: black;
+}
+
+/* Блок кнопок покупки токена */
+.block-buying-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Дизайн кнопки покупки */
+.buying-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 250px;
+    height: 50px;
+    padding: 12px;
+    margin: 5px;
+    font-size: 18px;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #000;
+    color: white;
+    border: none;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2), 
+        0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Иконки в кнопках покупки */
+.button-icon {
+    width: 18px; 
+    height: 18px;
+}
+
+/* Изменение цвета при наведении на кнопку покупки */
+    .buying-button:hover {
+        background-color: #555;
+    }
+
+/* Адаптация блока покупки для различных устройств */
+@media (max-width: 768px) {
+    .buying-button {
+        width: 180px;
+    }
+    .buying-title {
+        font-size: 40px;
+        padding-block-end: 10px;
+    }
+    .buying-block {
+        padding: 20px;
+    }
+}
+@media (min-width: 2000px) {
+    .buying-block {
+        max-width: 2000px;
+    }
+    .buying-title {
+        font-size: 100px;
+    }
+    .block-buying-buttons {
+        gap: 20px;
+    }
+    .buying-button {
+        gap: 20px;
+        width: 400px;
+        height: 70px;
+        font-size: 25px;
+    }
+    .button-icon {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+/* Блок с полем для копирования */
+.token-address {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+    /* Поле с адресом токена */
+    .token-address input {
+        width: 100%;
+        max-width: 520px;
+        padding: 10px;
+        font-size: 18px;
+        text-align: center;
+        border: 2px solid #000000;
+        border-radius: 5px;
+        color: #666;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Кнопка для копирования адреса токена */
+    .token-address button {
+        background-color: black;
+        color: white;
+        border: none;
+        padding: 10px 10px;
+        margin-left: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.1);
+        align-content: center;
+        justify-content: center;
+    }
+        
+        /* Изменение цвета кнопки копирования при наведении курсора/нажатии (на мобильной версии) */
+        .token-address button:hover {
+            background-color: #555;
+        }
+
+/* Размеры и стиль иконки копирования */
+.copy-icon {
+    width: 16px;
+    height: 16px;
+    padding-top: 2px;
+}
+
+/* Заголовок блока копирования */
+.address-title {
+    font-size: 60px;
+    font-weight: 800;
+    padding-block-end: 30px;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+    color: black;
+}
+
+/* Адаптация блока копирования для различных устройств */
+@media (max-width: 768px) {
+    .address-title {
+        font-size: 30px;
+        padding-block-end: 20px;
+        letter-spacing: 1px;
+    }
+    .token-address input {
+        max-width: 300px;
+        font-size: 14px;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+    .token-address button {
+        margin-left: 0px;
+    }
+}
+@media (min-width: 2000px) {
+    .address-title {
+        font-size: 100px;
+        padding-block-end: 20px;
+        letter-spacing: 1px;
+    }
+    .token-address input {
+        max-width: 600px;
+        font-size: 25px;
+        font-family: 'Space Grotesk', sans-serif;
+    }
+    .token-address button {
+        margin-left: 0px;
+    }
+    .copy-icon {
+        width: 25px;
+        height: 25px;
+        padding-top: 2px;
+    }
+}
+
+/* Блок "What is...?" */
+.what-is-block {
+    background: url('media/what-is.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 35px;
+    border-radius: 15px;
+    margin: 30px auto;
+    width: 90%;
+    max-width: 1000px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок блока "What is...?" */
+.what-is-title {
+    font-size: 60px;
+    font-weight: 800;
+    padding-block-end: 30px;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+    color: black;
+}
+
+/* Блок с текстом внутри "What is...?" */
+.what-is-text-block {
+    padding: 15px 15px;
+    background: white;
+    border: 2px solid #555;
+    border-radius: 10px;
+}
+
+/* Текст блока "What is...?" */
+.what-is-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    text-align: justify;
+    color: #444;
+}
+
+/* Адаптация блока "What is...?" для различных устройств */
+@media (max-width: 768px) {
+    .what-is-block {
+        background: url('media/what-is.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 20px;
+    }
+    .what-is-title {
+        font-size: 30px;
+        padding-block-end: 15px;
+    }
+    .what-is-text {
+        font-size: 14px;
+    }
+}
+@media (min-width: 2000px) {
+    .what-is-block {
+        max-width: 2000px;
+    }
+    .what-is-title {
+        font-size: 100px;
+        padding-block-end: 20px;
+    }
+    .what-is-text {
+        font-size: 25px;
+    }
+}
+
+/* Блок "цифра-текст" в "How it works?" */
+.how-it-works-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+/* Заголовок блока "How it works...?" */
+.how-it-works-title {
+    font-size: 60px;
+    letter-spacing: 2px;
+    padding-block-end: 30px;
+    font-family: 'Bebas Neue', sans-serif;
+    color: black;
+}
+
+/* Цифра в блоке "цифра-текст" в "How it works?" */
+.how-it-works-number {
+    background: #000;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 20%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+/* Текст в блоке "цифра-текст" в "How it works?" */
+.how-it-works-text {
+    font-size: 20px;
+    color: #444;
+    margin: 0;
+    text-align: justify; 
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Адаптация блока "How it works...?" для различных устройств */
+@media (max-width: 768px) {
+    .how-it-works-number {
+        height: 17px;
+        width: 17px;
+        font-size: 12px;
+        margin-right: 12px;
+    }
+    .how-it-works-title {
+        font-size: 26px;
+        padding-block-end: 15px;
+    }
+    .how-it-works-text {
+        font-size: 14px;
+    }
+}
+@media (min-width: 2000px) {
+    .how-it-works-number {
+        height: 30px;
+        width: 30px;
+        font-size: 25px;
+        margin-right: 25px;
+    }
+    .how-it-works-title {
+        font-size: 100px;
+        padding-block-end: 20px;
+    }
+    .how-it-works-text {
+        font-size: 25px;
+    }
+}
+
+/* Блок для презентации */
+.presentation-block {
+    scroll-margin-top: 85px;
+    background-color: black;
+    padding: 35px;
+    border-radius: 15px;
+    margin: 30px auto;
+    width: 90%;
+    max-width: 1000px;
+    border: 3px solid #ffffff;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок блока с презентацией */
+.presentation-title {
+    font-size: 60px;
+    letter-spacing: 2px;
+    padding-block-end: 30px;
+    font-family: 'Bebas Neue', sans-serif;
+    color: white;
+}
+
+/* Блок для скачивания .pptx */
+.file-row-first {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin-block-end: 20px;
+}
+
+/* Блок для скачивания .pdf */
+.file-row-second {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+/* Стиль текста в кнопке скачивания */
+.file-type {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    text-align: left;
+    color: #ffffff;
+}
+
+/* Кнопка для скачивания презентации */
+.download-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    transition: background 0.3s ease;
+}
+
+    .download-button:hover {
+        background-color: #555; 
+    }
+
+/* Иконка для скачивания презентации */
+.download-icon {
+    width: 25px;
+    height: 25px;
+}
+
+/* Адаптация блока с презентацией для различных устройств */
+@media (max-width: 768px) {
+    .presentation-block {
+        scroll-margin-top: 60px;
+        padding: 20px;
+    }
+    .presentation-title {
+        font-size: 30px;
+        padding-block-end: 15px;
+
+    }
+    .file-type {
+        font-size: 14px;
+        padding-left: 10px;
+    }
+    .download-button {
+        width: 25px;
+        height: 25px;
+    }
+    .download-icon {
+        width: 15px;
+        height: 15px;
+    }
+}
+@media (min-width: 2000px) {
+    .presentation-block {
+        scroll-margin-top: 100px;
+        max-width: 2000px;
+    }
+    .presentation-title {
+        font-size: 100px;
+        padding-block-end: 20px;
+    }
+    .file-type {
+        font-size: 25px;
+        padding-left: 25px;
+    }
+    .download-button {
+        width: 40px;
+        height: 40px;
+    }
+    .download-icon {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Блок с Community */
+.community-main-block {
+    background: url('media/comminity.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 35px;
+    border-radius: 15px;
+    margin: 30px auto;
+    width: 90%;
+    max-width: 1000px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок блока с Community */
+.community-title {
+    font-size: 60px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    letter-spacing: 2px;
+    font-family: 'Bebas Neue', sans-serif;
+    color: black;
+}
+
+/* Расположение вложений в блоке "Community" */
+.community-content {
+    padding-block-start: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 16px;
+}
+
+/* Вложенные блоки в "Community" */
+.community-block {
+    background: #ffffff;
+    border-radius: 15px;
+    flex: 1;
+    min-width: 280px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+    /* Третий вложенный блок во всю ширину "Community" */
+    .community-block.full-width {
+        flex-basis: 100%; 
+        display: flex;
+        align-items: center;
+        padding: 15px;
+    }
+
+/* Стиль цифры в "Community" */
+.community-number {
+    background: #ffffff;
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20%;
+    border: 2px solid black;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+/* Блок "заголовок-текст" в "Community" */
+.community-text {
+    border-left: 2px solid black;
+    text-align: center;
+    flex: 1;
+    font-size: 16px;
+    line-height: 1.5;
+    padding-left: 25px;
+}
+
+/* Стиль заголовка вложенного блока в "Community" */
+.community-point-title {
+    font-size: 25px;
+    margin: 0;
+    text-align: center;
+    font-weight: 500;
+    color: #000000;
+    font-family: 'Lora', sans-serif;
+}
+
+/* Стиль текста вложенного блока в "Community" */
+.community-point-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    text-align: justify;
+    color: #444;
+    padding-right: 10px;
+}
+
+/* Адаптация блока Community для различных устройств */
+@media (max-width: 768px) {
+    .community-main-block {
+        padding: 20px;
+    }
+    .community-title {
+        font-size: 25px;
+    }
+    .community-block {
+        min-width: 200px;
+        padding: 10px;
+    }
+        .community-block.full-width {
+            padding: 10px;
+        }
+    .community-point-title {
+        font-size: 15px;
+        font-weight: bold;
+        padding-right: 12px;
+    }
+    .community-point-text {
+        font-size: 13px;
+    }
+    .community-number {
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .community-main-block {
+        padding: 20px;
+    }
+    .community-title {
+        font-size: 60px;
+    }
+    .community-block {
+        min-width: 200px;
+        padding: 10px;
+    }
+        .community-block.full-width {
+            padding: 10px;
+        }
+    .community-point-title {
+        font-size: 20px;
+        font-weight: bold;
+        padding-right: 12px;
+    }
+    .community-point-text {
+        font-size: 18px;
+    }
+    .community-number {
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+        font-size: 14px;
+    }
+}
+@media (min-width: 2000px) {
+    .community-main-block {
+        max-width: 2000px;
+    }
+    .community-title {
+        font-size: 100px;
+    }
+    .community-block {
+        min-width: 200px;
+        padding: 20px;
+    }
+        .community-block.full-width {
+            padding: 20px;
+        }
+    .community-point-title {
+        font-size: 40px;
+        padding-right: 25px;
+    }
+    .community-point-text {
+        font-size: 25px;
+        text-align: center;
+    }
+    .community-number {
+        width: 30px;
+        height: 30px;
+        margin-right: 8px;
+        font-size: 25px;
+    }
+}
+
+/* Блок Investing */
+.investing-main-block {
+    background: url('media/investing.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 35px;
+    border-radius: 15px;
+    margin: 30px auto;
+    width: 90%;
+    max-width: 1000px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок блока Investing */
+.investing-title {
+    font-size: 60px;
+    letter-spacing: 2px;
+    font-family: 'Bebas Neue', sans-serif;
+    color: black;
+    padding-block-end: 10px;
+}
+
+/* Контент в блоке "Investing" */
+.investing-content {
+    list-style: none;
+}
+    /* Текст во вложенном блоке */
+    .investing-content li {
+        padding: 7px 20px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 2px solid black;
+        border-left: 20px solid black;
+        text-align: justify;
+        background-color: #ffffff;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 20px;
+        color: #555;
+    }
+
+/* Заголовок вложенного блока в "Investing" */
+.investing-point-title {
+    text-align: left;
+    font-size: 22px;
+    font-family: 'Lora', sans-serif;
+    color: black;
+}
+
+/* Адаптация блока Investing для различных устройств */
+@media (max-width: 768px) {
+    .investing-main-block {
+        padding: 20px;
+    }
+    .investing-title {
+        font-size: 26px;
+        padding-block-end: 15px;
+    }
+    .investing-point-title {
+        font-size: 16px;
+        font-weight: bold;
+        padding-block-end: 5px;
+    }
+    .investing-content li {
+        padding: 5px 10px;
+        margin-bottom: 10px;
+        border-left: 10px solid black;
+        font-size: 14px;
+    }
+}
+@media (min-width: 2000px) {
+    .investing-main-block {
+        max-width: 2000px;
+    }
+    .investing-title {
+        font-size: 100px;
+        padding-block-end: 20px;
+    }
+    .investing-point-title {
+        font-size: 40px;
+        padding-block-end: 15px;
+    }
+    .investing-content li {
+        padding: 5px 10px;
+        margin-bottom: 10px;
+        border-left: 30px solid black;
+        font-size: 25px;
+    }
+}
+
+/* Блок Future */
+.future-block {
+    background: url('media/future.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 35px;
+    border-radius: 15px;
+    margin: 30px auto;
+    width: 90%;
+    max-width: 1000px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок блока Future */
+.future-title {
+    font-size: 60px;
+    letter-spacing: 2px;
+    font-family: 'Bebas Neue', sans-serif;
+    color: black;
+    padding-block-end: 10px;
+}
+
+/* Текст в блоке "Future" */
+.future-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    text-align: justify;
+    color: #000000;
+}
+
+/* Адаптация блока Future для различных устройств */
+@media (max-width: 768px) {
+    .future-block {
+        padding: 20px;
+    }
+    .future-title {
+        font-size: 24px;
+        padding-block-end: 15px;
+    }
+    .future-text {
+        font-size: 14px;
+        font-weight: bold;
+    }
+}
+@media (min-width: 2000px){
+    .future-block {
+        max-width: 2000px;
+    }
+    .future-title {
+        font-size: 100px;
+        padding-block-end: 20px;
+    }
+    .future-text {
+        font-size: 25px;
+    }
+}
+
+/* Стиль секции "Social media" */
+.social-media-section {
+    background: url('media/social-medias-back.jpg') center, no-repeat;
+    background-size: cover;
+    padding: 40px;
+    text-align: center;
+    border-top: 3px solid black;
+}
+
+/* Заголовок блока Social media */
+.social-media-title {
+    color: #555;
+    font-size: 45px;
+    font-weight: 800;
+    padding-block-end: 45px;
+    color: black;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+}
+
+/* Стиль для иконок в секции "Social media" */
+.social-media-links {
+    list-style: none;
+}
+    .social-media-links li {
+        display: inline-block;
+        margin: 0 20px;
+    }
+    .social-media-links a {
+        display: block;
+        width: 50px;
+        height: 50px;
+        background: none;
+        overflow: hidden;
+        transition: background-color 0.3s;
+    }
+    .social-media-links img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+/* Адаптация секции Social media для различных устройств */
+@media (max-width: 768px) {
+    .social-media-section {
+        padding: 20px;
+    }
+    .social-media-title {
+        font-size: 26px;
+        padding-block-end: 20px;
+    }
+    .social-media-links li {
+        margin: 0 7px;
+    }
+    .social-media-links img {
+        width: 70%;
+        height: 70%;
+    }
+}

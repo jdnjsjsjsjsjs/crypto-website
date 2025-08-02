@@ -1,0 +1,24 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build output
+Bin/
+obj/
+bin/
+Debug/
+Release/
+
+# NuGet
+packages/
+*.nupkg
+project.lock.json
+project.assets.json
+*.snupkg
+
+# System
+Thumbs.db
+*.DS_Store
+*.config
+*.sln
